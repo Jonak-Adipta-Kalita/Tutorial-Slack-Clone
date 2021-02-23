@@ -15,9 +15,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import { db } from '../features/firebase';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../features/firebase';
 
 function Sidebar() {
 	const [channels, loading, error] = useCollection(db.collection('rooms'));
+	const [user] = useAuthState(auth);
 	return (
 		<SidebarContainer>
 			<SidebarHeader>
@@ -25,7 +28,7 @@ function Sidebar() {
 					<h2>BeastNight TV</h2>
 					<h3>
 						<FiberManualRecordIcon />
-						Jonak
+						{user?.displayName}
 					</h3>
 				</SidebarInfo>
 				<CreateIcon />
@@ -42,7 +45,7 @@ function Sidebar() {
 			<SidebarOptions Icon={ExpandMoreIcon} title="Channels" />
 			<hr />
 			<SidebarOptions Icon={AddIcon} addChannelOption title="Add Channel" />
-			{channels?.docs.map(doc => (
+			{channels?.docs.map((doc) => (
 				<SidebarOptions key={doc.id} id={doc.id} title={doc.data().name} />
 			))}
 		</SidebarContainer>
