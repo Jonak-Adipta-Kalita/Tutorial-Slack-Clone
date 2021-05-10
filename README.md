@@ -1,3 +1,7 @@
+[View App](https://jak-slack-clone.netlify.app)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/461fd7d1-9f78-4e1a-a1a0-c963612d7d85/deploy-status)](https://app.netlify.com/sites/jak-slack-clone/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
